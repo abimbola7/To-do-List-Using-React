@@ -1,25 +1,53 @@
+import { useState } from 'react';
 import logo from './logo.svg';
+import Table from './components/Table';
+import TableForm from './components/TodoForm/TodoForm';
 import './App.css';
+const c = console.log.bind(document);
 
 function App() {
+  const [todoArray, setTodoArray] = useState(
+    [
+      {
+        id : 1,
+        list : "do the dishes",
+        status : false,
+      },
+      {
+        id: 2,
+        list : "read 512",
+        status : true,
+      },
+    ]
+  )
+
+  const saveDataHandler = (data) => {
+    // c(data);
+    setTodoArray([...todoArray, data]);
+    // setTodoArray(prevState => {
+    //   return [...prevState, data]
+    // })
+    c(todoArray)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className=''>
+      <div className="text-center">
+        <h1 className='display-4'>To-do List</h1>
+      </div>
+
+      <div className="my-5">
+        <TableForm
+        onSaveTaskData={saveDataHandler}
+        />
+      </div>
+
+      <Table
+      tableData={todoArray}
+      />
+
     </div>
-  );
+  )
 }
 
 export default App;
