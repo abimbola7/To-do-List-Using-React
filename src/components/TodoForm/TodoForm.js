@@ -6,7 +6,6 @@ const TableForm = (props) => {
     const [task, setTask] = useState("");
 
     const taskChangeHandler = (event) => {
-        // c(event.target.value);
         setTask(event.target.value);
     }
 
