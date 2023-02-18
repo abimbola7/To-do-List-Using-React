@@ -16,6 +16,7 @@ const TableForm = (props) => {
             status : false
         }
         props.onSaveTaskData(newForm);
+        setTask("");
     }
 
     return (

@@ -15,8 +15,9 @@ const Table = (props) => {
             </thead>
             <tbody>
                 {
-                    props.tableData.map((data) => (
+                    props.tableData.map((data, index) => (
                         <TableBody
+                        ind={index+1}
                         lists={data.list}
                         statuses={data.status}                        
                         />
