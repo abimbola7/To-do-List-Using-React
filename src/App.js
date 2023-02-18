@@ -36,7 +36,7 @@ function App() {
         <h1 className='display-4'>To-do List</h1>
       </div>
 
-      <div className="my-5">
+      <div className="my-5 d-flex justify-content-center">
         <TableForm
         onSaveTaskData={saveDataHandler}
         />

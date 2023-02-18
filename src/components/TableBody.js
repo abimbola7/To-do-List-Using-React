@@ -9,8 +9,9 @@ const TableBody = (props) => {
         setCondition(!condition);
     }
 
+    // const className = ['bg-primary', condition ? 'bg-danger': ""].join(" ")
     return (
-        <tr>
+        <tr className={!condition ? "bg-secondary" : ""}>
             <td></td>
             <td>{props.lists}</td>
             <td>

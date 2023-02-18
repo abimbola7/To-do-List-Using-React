@@ -1,7 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TableBody from "./TableBody";
-import "./Table.css"
 const c = console.log.bind(document);
 
 const Table = (props) => {
