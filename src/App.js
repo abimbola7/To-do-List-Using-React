@@ -1,51 +1,40 @@
 import { useState } from 'react';
-import logo from './logo.svg';
+import Form from './components/Form';
 import Table from './components/Table';
-import TableForm from './components/TodoForm/TodoForm';
 import './App.css';
 const c = console.log.bind(document);
 
 function App() {
-  const [todoArray, setTodoArray] = useState(
-    [
-      {
-        id : 1,
-        list : "do the dishes",
-        status : false,
-      },
-      {
-        id: 2,
-        list : "read 512",
-        status : true,
-      },
-    ]
-  )
+  const [inputTask, setInputTask] = useState("");
+  const [todoArray, setTodoArray] = useState([]);
 
-  const saveDataHandler = (data) => {
-    // c(data);
-    setTodoArray([...todoArray, data]);
-    // setTodoArray(prevState => {
-    //   return [...prevState, data]
-    // })
-    c(todoArray)
+  let content;
+
+  if (todoArray.length > 0) {
+    content = 
+    <Table
+    todoArray={todoArray}
+    setTodoArray={setTodoArray}
+    />
   }
+
 
   return (
     <div className=''>
       <div className="text-center">
-        <h1 className='display-4'>To-do List</h1>
+        <h1 className='display-4'>To-do List {inputTask}</h1>
       </div>
 
       <div className="my-5 d-flex justify-content-center">
-        <TableForm
-        onSaveTaskData={saveDataHandler}
+        <Form
+        inputTask={inputTask}
+        setInputTask={setInputTask}
+        todoArray={todoArray}
+        setTodoArray={setTodoArray}
         />
       </div>
 
-      <Table
-      tableData={todoArray}
-      />
-
+      {content}
     </div>
   )
 }

@@ -3,8 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import TableBody from "./TableBody";
 const c = console.log.bind(document);
 
-const Table = (props) => {
-    c(props.tableData[0].list)
+const Table = ({todoArray, setTodoArray}) => {
     return (
         <table className="table-bordered table-hover text-center w-100">
             <thead>
@@ -12,17 +11,20 @@ const Table = (props) => {
                 <th>Task</th>
                 <th>Action</th>
                 <th>Progress</th>
+                <th></th>
             </thead>
             <tbody>
-                {
-                    props.tableData.map((data, index) => (
-                        <TableBody
-                        ind={index+1}
-                        lists={data.list}
-                        statuses={data.status}                        
-                        />
-                    ))
-                }
+                {todoArray.map(todo => (
+                    <TableBody
+                    key={todo.id}
+                    id={todo.id}
+                    todo={todo}
+                    list={todo.list}
+                    status={todo.status}
+                    todoArray={todoArray}
+                    setTodoArray={setTodoArray}
+                    />
+                ))}
             </tbody>
         </table>
     )
